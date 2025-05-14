@@ -1,0 +1,27 @@
+class Student {
+    String name;
+    int age;
+
+    // 1. Using 'this' to refer to instance variables
+    Student(String name, int age) {
+        this.name = name; // 'this.name' refers to the instance variable
+        this.age = age;   // 'age' is the parameter
+    }
+
+    // 2. Using 'this' to call another constructor
+    Student() {
+        this("Unknown", 0); // Calls the above constructor
+    }
+
+    void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student("Alice", 20);
+        Student s2 = new Student();
+
+        s1.displayInfo(); // Output: Name: Alice, Age: 20
+        s2.displayInfo(); // Output: Name: Unknown, Age: 0
+    }
+}

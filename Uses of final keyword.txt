@@ -1,0 +1,41 @@
+
+A final variable cannot be reassigned after it is initialized.
+
+
+
+public class FinalVariableExample {
+    public static void main(String[] args) {
+        final int MAX_USERS = 100; // final variable
+
+        System.out.println("Maximum allowed users: " + MAX_USERS);
+
+        // Uncommenting the next line will cause a compilation error:
+        // MAX_USERS = 200; // Error: cannot assign a value to final variable
+    }
+}
+
+
+
+
+A final method cannot be overridden by subclasses.
+
+
+class Vehicle {
+    public final void startEngine() {
+        System.out.println("Engine started");
+    }
+}
+
+class Car extends Vehicle {
+    // The following will cause a compile-time error:
+    // public void startEngine() {
+    //     System.out.println("Car engine started");
+    // }
+}
+
+public class FinalMethodExample {
+    public static void main(String[] args) {
+        Car myCar = new Car();
+        myCar.startEngine(); // Output: Engine started
+    }
+}
