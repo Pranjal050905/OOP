@@ -1,0 +1,118 @@
+import java.util.Scanner;
+
+// Base class Employee
+class Employee {
+    String empName, empId, address, mailId;
+    long mobileNo;
+    double basicPay;
+
+    // Constructor
+    Employee(String empName, String empId, String address, String mailId, long mobileNo, double basicPay) {
+        this.empName = empName;
+        this.empId = empId;
+        this.address = address;
+        this.mailId = mailId;
+        this.mobileNo = mobileNo;
+        this.basicPay = basicPay;
+    }
+
+    // Method to calculate and display salary details
+    void generatePaySlip() {
+        double DA = 0.97 * basicPay;    // 97% of BP
+        double HRA = 0.10 * basicPay;   // 10% of BP
+        double PF = 0.12 * basicPay;    // 12% of BP
+        double staffClubFund = 0.001 * basicPay; // 0.1% of BP
+
+        double grossSalary = basicPay + DA + HRA;
+        double netSalary = grossSalary - (PF + staffClubFund);
+
+        System.out.println("\n----- Pay Slip -----");
+        System.out.println("Employee Name: " + empName);
+        System.out.println("Employee ID: " + empId);
+        System.out.println("Basic Pay: " + basicPay);
+        System.out.println("DA (97%): " + DA);
+        System.out.println("HRA (10%): " + HRA);
+        System.out.println("PF (12%): " + PF);
+        System.out.println("Staff Club Fund (0.1%): " + staffClubFund);
+        System.out.println("Gross Salary: " + grossSalary);
+        System.out.println("Net Salary: " + netSalary);
+    }
+}
+
+// Derived class: Programmer
+class Programmer extends Employee {
+    Programmer(String empName, String empId, String address, String mailId, long mobileNo, double basicPay) {
+        super(empName, empId, address, mailId, mobileNo, basicPay);
+    }
+}
+
+// Derived class: Assistant Professor
+class AssistantProfessor extends Employee {
+    AssistantProfessor(String empName, String empId, String address, String mailId, long mobileNo, double basicPay) {
+        super(empName, empId, address, mailId, mobileNo, basicPay);
+    }
+}
+
+// Derived class: Associate Professor
+class AssociateProfessor extends Employee {
+    AssociateProfessor(String empName, String empId, String address, String mailId, long mobileNo, double basicPay) {
+        super(empName, empId, address, mailId, mobileNo, basicPay);
+    }
+}
+
+// Derived class: Professor
+class Professor extends Employee {
+    Professor(String empName, String empId, String address, String mailId, long mobileNo, double basicPay) {
+        super(empName, empId, address, mailId, mobileNo, basicPay);
+    }
+}
+
+// Main class to test the implementation
+public class EmployeeInheritance {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Employee Name: ");
+        String name = sc.nextLine();
+        System.out.print("Enter Employee ID: ");
+        String id = sc.nextLine();
+        System.out.print("Enter Address: ");
+        String address = sc.nextLine();
+        System.out.print("Enter Mail ID: ");
+        String mailId = sc.nextLine();
+        System.out.print("Enter Mobile Number: ");
+        long mobileNo = sc.nextLong();
+        System.out.print("Enter Basic Pay: ");
+        double basicPay = sc.nextDouble();
+
+        System.out.println("\nSelect Employee Type:");
+        System.out.println("1. Programmer");
+        System.out.println("2. Assistant Professor");
+        System.out.println("3. Associate Professor");
+        System.out.println("4. Professor");
+        int choice = sc.nextInt();
+
+        Employee emp;
+        switch (choice) {
+            case 1:
+                emp = new Programmer(name, id, address, mailId, mobileNo, basicPay);
+                break;
+            case 2:
+                emp = new AssistantProfessor(name, id, address, mailId, mobileNo, basicPay);
+                break;
+            case 3:
+                emp = new AssociateProfessor(name, id, address, mailId, mobileNo, basicPay);
+                break;
+            case 4:
+                emp = new Professor(name, id, address, mailId, mobileNo, basicPay);
+                break;
+            default:
+                System.out.println("Invalid choice. Exiting.");
+                sc.close();
+                return;
+        }
+
+        emp.generatePaySlip();
+        sc.close();
+    }
+}

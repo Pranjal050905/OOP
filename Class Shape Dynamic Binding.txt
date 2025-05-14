@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+// Abstract base class
+abstract class Shape {
+    double dim1, dim2;
+
+    void getData(Scanner sc) {
+        System.out.print("Enter first dimension: ");
+        dim1 = sc.nextDouble();
+        System.out.print("Enter second dimension: ");
+        dim2 = sc.nextDouble();
+    }
+
+    // Abstract method (forces overriding)
+    abstract void computeArea();
+}
+
+// Derived class for Triangle
+class Triangle extends Shape {
+    void computeArea() {
+        double area = 0.5 * dim1 * dim2;
+        System.out.println("Area of Triangle: " + area);
+    }
+}
+
+// Derived class for Rectangle
+class Rectangle extends Shape {
+    void computeArea() {
+        double area = dim1 * dim2;
+        System.out.println("Area of Rectangle: " + area);
+    }
+}
+
+// Main class to demonstrate dynamic binding
+public class ShapeTest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Shape shape;  // base class reference
+
+        System.out.println("Choose Shape:");
+        System.out.println("1. Triangle");
+        System.out.println("2. Rectangle");
+        int choice = sc.nextInt();
+
+        // Dynamic binding
+        if (choice == 1) {
+            shape = new Triangle();
+        } else if (choice == 2) {
+            shape = new Rectangle();
+        } else {
+            System.out.println("Invalid choice.");
+            sc.close();
+            return;
+        }
+
+        shape.getData(sc);       // call common method
+        shape.computeArea();     // overridden method call (dynamic binding)
+
+        sc.close();
+    }
+}

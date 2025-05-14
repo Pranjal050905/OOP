@@ -1,0 +1,140 @@
+// Vehicle.java
+// This interface defines the common functionalities all vehicles must have.
+interface Vehicle {
+    // Method to change the gear
+    void changeGear(int newGear);
+    
+    // Method to increase speed
+    void speedUp(int increment);
+    
+    // Method to apply brakes (reduce speed)
+    void applyBrakes(int decrement);
+    
+    // Method to display the current speed and gear
+    void displayStatus();
+}
+
+// Bicycle.java
+// Implements Vehicle interface specifically for a Bicycle
+class Bicycle implements Vehicle {
+    private int speed; // current speed of the bicycle
+    private int gear;  // current gear of the bicycle
+
+    // Changes gear of the bicycle
+    public void changeGear(int newGear) {
+        gear = newGear;
+        System.out.println("Bicycle gear changed to: " + gear);
+    }
+
+    // Increases speed of the bicycle
+    public void speedUp(int increment) {
+        speed += increment;
+        System.out.println("Bicycle speed increased by " + increment + " to " + speed);
+    }
+
+    // Decreases speed of the bicycle by applying brakes
+    public void applyBrakes(int decrement) {
+        speed -= decrement;
+        if (speed < 0) speed = 0; // Ensure speed doesn't go below 0
+        System.out.println("Bicycle speed decreased by " + decrement + " to " + speed);
+    }
+
+    // Displays current speed and gear of the bicycle
+    public void displayStatus() {
+        System.out.println("Bicycle -> Speed: " + speed + ", Gear: " + gear);
+    }
+}
+
+// Bike.java
+// Implements Vehicle interface specifically for a Bike
+class Bike implements Vehicle {
+    private int speed; // current speed of the bike
+    private int gear;  // current gear of the bike
+
+    // Changes gear of the bike
+    public void changeGear(int newGear) {
+        gear = newGear;
+        System.out.println("Bike gear changed to: " + gear);
+    }
+
+    // Increases speed of the bike
+    public void speedUp(int increment) {
+        speed += increment;
+        System.out.println("Bike speed increased by " + increment + " to " + speed);
+    }
+
+    // Decreases speed of the bike by applying brakes
+    public void applyBrakes(int decrement) {
+        speed -= decrement;
+        if (speed < 0) speed = 0; // Ensure speed doesn't go below 0
+        System.out.println("Bike speed decreased by " + decrement + " to " + speed);
+    }
+
+    // Displays current speed and gear of the bike
+    public void displayStatus() {
+        System.out.println("Bike -> Speed: " + speed + ", Gear: " + gear);
+    }
+}
+
+// Car.java
+// Implements Vehicle interface specifically for a Car
+class Car implements Vehicle {
+    private int speed; // current speed of the car
+    private int gear;  // current gear of the car
+
+    // Changes gear of the car
+    public void changeGear(int newGear) {
+        gear = newGear;
+        System.out.println("Car gear changed to: " + gear);
+    }
+
+    // Increases speed of the car
+    public void speedUp(int increment) {
+        speed += increment;
+        System.out.println("Car speed increased by " + increment + " to " + speed);
+    }
+
+    // Decreases speed of the car by applying brakes
+    public void applyBrakes(int decrement) {
+        speed -= decrement;
+        if (speed < 0) speed = 0; // Ensure speed doesn't go below 0
+        System.out.println("Car speed decreased by " + decrement + " to " + speed);
+    }
+
+    // Displays current speed and gear of the car
+    public void displayStatus() {
+        System.out.println("Car -> Speed: " + speed + ", Gear: " + gear);
+    }
+}
+
+// Main.java
+// Main class to demonstrate working of Vehicle interface implementations
+public class Main {
+    public static void main(String[] args) {
+        // Creating objects of each vehicle using Vehicle interface reference
+        Vehicle bicycle = new Bicycle();
+        Vehicle bike = new Bike();
+        Vehicle car = new Car();
+
+        // Performing actions on Bicycle
+        System.out.println("\n--- Bicycle Actions ---");
+        bicycle.changeGear(2);        // Changing gear to 2
+        bicycle.speedUp(10);          // Increasing speed by 10
+        bicycle.applyBrakes(3);       // Decreasing speed by 3
+        bicycle.displayStatus();      // Displaying current status
+
+        // Performing actions on Bike
+        System.out.println("\n--- Bike Actions ---");
+        bike.changeGear(3);           // Changing gear to 3
+        bike.speedUp(40);             // Increasing speed by 40
+        bike.applyBrakes(15);         // Decreasing speed by 15
+        bike.displayStatus();         // Displaying current status
+
+        // Performing actions on Car
+        System.out.println("\n--- Car Actions ---");
+        car.changeGear(4);            // Changing gear to 4
+        car.speedUp(60);              // Increasing speed by 60
+        car.applyBrakes(20);          // Decreasing speed by 20
+        car.displayStatus();          // Displaying current status
+    }
+}

@@ -1,0 +1,71 @@
+import java.util.*;
+
+public class PropertyCounter {
+
+    // Check if a number is even
+    public static boolean isEven(int num) {
+        return num % 2 == 0;
+    }
+
+    // Check if a number is odd
+    public static boolean isOdd(int num) {
+        return num % 2 != 0;
+    }
+
+    // Check if a number is prime
+    public static boolean isPrime(int num) {
+        if (num <= 1) return false;
+        if (num == 2) return true;
+        if (num % 2 == 0) return false;
+        for (int i = 3; i <= Math.sqrt(num); i += 2) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+
+    // Check if a number is palindrome
+    public static boolean isPalindrome(int num) {
+        int original = num;
+        int reversed = 0;
+        while (num > 0) {
+            int digit = num % 10;
+            reversed = reversed * 10 + digit;
+            num /= 10;
+        }
+        return original == reversed;
+    }
+
+    // Generic method to count based on a property
+    public static int countByProperty(Collection<Integer> collection, String property) {
+        int count = 0;
+        for (int num : collection) {
+            switch (property.toLowerCase()) {
+                case "even":
+                    if (isEven(num)) count++;
+                    break;
+                case "odd":
+                    if (isOdd(num)) count++;
+                    break;
+                case "prime":
+                    if (isPrime(num)) count++;
+                    break;
+                case "palindrome":
+                    if (isPalindrome(num)) count++;
+                    break;
+                default:
+                    throw new IllegalArgumentException("Unknown property: " + property);
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        // Example list
+        List<Integer> numbers = Arrays.asList(121, 13, 22, 17, 44, 33, 101, 4, 8, 9);
+
+        System.out.println("Total Even Numbers: " + countByProperty(numbers, "even"));
+        System.out.println("Total Odd Numbers: " + countByProperty(numbers, "odd"));
+        System.out.println("Total Prime Numbers: " + countByProperty(numbers, "prime"));
+        System.out.println("Total Palindromes: " + countByProperty(numbers, "palindrome"));
+    }
+}

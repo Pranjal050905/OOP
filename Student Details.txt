@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+class Student {
+    // Attributes of Student
+    private int rollNo;
+    private String name;
+    private int age;
+    private String course;
+
+    // Constructor
+    public Student(int rollNo, String name, int age, String course) {
+        this.rollNo = rollNo;
+        this.name = name;
+        this.age = age;
+        this.course = course;
+    }
+
+    // Method to display student details
+    public void displayStudent() {
+        System.out.println("Roll No: " + rollNo + ", Name: " + name + ", Age: " + age + ", Course: " + course);
+    }
+}
+
+public class StudentDemo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Student[] students = new Student[5]; // Array of Student objects
+
+        // Accepting data for 5 students
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Enter details for Student " + (i + 1) + ":");
+            System.out.print("Roll No: ");
+            int rollNo = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+            System.out.print("Name: ");
+            String name = scanner.nextLine();
+            System.out.print("Age: ");
+            int age = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+            System.out.print("Course: ");
+            String course = scanner.nextLine();
+
+            // Creating student object and storing in array
+            students[i] = new Student(rollNo, name, age, course);
+        }
+
+        // Displaying student details
+        System.out.println("\nStudent Details:");
+        for (int i = 0; i < 5; i++) {
+            students[i].displayStudent();
+        }
+
+        scanner.close();
+    }
+}
